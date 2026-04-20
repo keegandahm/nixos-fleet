@@ -1,12 +1,9 @@
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-  };
+  description = "Fleet - minimal NixOS multi-host configuration library";
 
-  outputs = { self, nixpkgs }:
-  {
-    nixosModules = {
-      mkNixosConfigurations = import ./nixosModules/mkNixosConfigurations.nix nixpkgs.lib;
-    };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+  outputs = { self, nixpkgs }: {
+    lib = import ./lib.nix nixpkgs.lib;
   };
 }
